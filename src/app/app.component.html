@@ -1,0 +1,93 @@
+<hello name="{{ name }}"></hello>
+<h1>Marcofram</h1>
+
+<div class="row">Write your math equation in JS. Use 'x' as variable</div>
+<div class="row">
+  <input type="text" [(ngModel)]="getFuncFromUser" />
+  <input type="number" [(ngModel)]="coefficient" step="0.1" />
+  usage: "this.coefficient"
+</div>
+
+<div class="row">
+  <span class="lable">
+    START:
+    <input type="number" [(ngModel)]="start" />
+  </span>
+
+  <span class="lable">
+    END:
+    <input type="number" [(ngModel)]="end" />
+  </span>
+
+  <span class="lable">
+    STEP:
+    <input type="number" min="0.01" [(ngModel)]="step" step="0.01" />
+  </span>
+
+  <span class="lable">
+    <input
+      [disabled]="disableSubmit()"
+      type="submit"
+      value="create"
+      (click)="submit()"
+    />
+  </span>
+</div>
+
+<hr />
+
+<div class="row">
+  <span class="lable">
+    SCALE:
+    <input type="number" min="1" [(ngModel)]="scale" step="0.5" />
+  </span>
+
+  <span class="lable">
+    SPACING:
+    <input type="number" min="-1" [(ngModel)]="spacing" />
+  </span>
+
+  <span class="lable">
+    MAX:
+    <input
+      [readonly]="infinity"
+      [disabled]="infinity"
+      type="number"
+      [(ngModel)]="max"
+      step="10"
+    />
+  </span>
+
+  <span class="lable">
+    NO MAX:
+    <input type="checkbox" [(ngModel)]="infinity" />
+  </span>
+
+  <span class="lable">
+    SHOW LINES:
+    <input type="checkbox" [(ngModel)]="show_lines" />
+  </span>
+</div>
+
+<div id="container">
+  <span *ngFor="let point of graph">
+    <div
+      class="verticalLine"
+      [style.height]="cleanFunc(point.h)+'px'"
+      [style.margin-left]="spacing+'px'"
+      [style.transform]="'rotate('+point.r+'deg)'"
+      [style.border-color]="show_lines ? (point.f_x < 0 ? 'tomato' : 'greenyellow') : 'white'"
+    >
+      <span
+        class="tooltiptext"
+        [style.transform]="'rotate('+point.r+'deg)'"
+        [style.left]="point.f_x < 0 ? '' : '105%'"
+        [style.margin-left]="point.f_x < 0 ? '' : '5px'"
+        [style.right]="point.f_x < 0 ? '105%' : ''"
+        [style.margin-right]="point.f_x < 0 ? '7.5px' : ''"
+      >
+        ({{point.x | number : '0.0-2'}}, {{point.f_x | number : '0.0-2'}})
+      </span>
+    </div>
+  </span>
+</div>

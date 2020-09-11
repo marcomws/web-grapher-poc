@@ -1,0 +1,115 @@
+p {
+  font-family: Lato;
+}
+
+.verticalLine {
+  position: relative;
+  display: inline-block;
+  border-left: 1px solid;
+  transform-origin: bottom;
+}
+
+.verticalLine::after {
+  content: "";
+  display: block;
+  width: 2px;
+  height: 2px;
+  border-radius: 1px;
+  margin-left: -1.5px;
+  margin-top: -1px;
+  background-color: blue;
+}
+
+.verticalLine:hover {
+  -webkit-animation: flash 1s infinite;
+  animation: flash 1s infinite;
+}
+
+.verticalLine .tooltiptext {
+  visibility: hidden;
+  width: auto;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+
+  /* Position the tooltip */
+  position: absolute;
+  white-space: nowrap;
+  z-index: 1;
+  top: -5px;
+}
+
+.verticalLine:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.verticalLine .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%; /* To the left of the tooltip */
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+
+input[type="text"] {
+  width: 500px;
+}
+
+input[type="number"] {
+  width: 50px;
+}
+
+input[type="submit"] {
+  width: 200px;
+  background-color: cyan;
+}
+
+input[type="submit"]:disabled {
+  background: #dddddd;
+}
+
+.lable {
+  margin-left: 10px;
+}
+
+.row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#container {
+  margin: 50px;
+}
+
+@-webkit-keyframes flash {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+    border-color: blue;
+  }
+  25%,
+  75% {
+    opacity: 0.75;
+    border-color: blueviolet;
+  }
+}
+@keyframes flash {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+    border-color: blue;
+  }
+  25%,
+  75% {
+    opacity: 0.75;
+    border-color: blueviolet;
+  }
+}
